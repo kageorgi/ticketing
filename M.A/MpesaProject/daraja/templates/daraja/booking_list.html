@@ -1,0 +1,21 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h3>All Bookings</h3>
+<table class="table">
+  <thead><tr><th>ID</th><th>Name</th><th>Movie</th><th>Show</th><th>Seats</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for b in bookings %}
+      <tr>
+        <td>{{ b.id }}</td>
+        <td>{{ b.customer_name }}</td>
+        <td>{{ b.show.movie.name }}</td>
+        <td>{{ b.show.show_time }}</td>
+        <td>{{ b.seats }}</td>
+        <td>KSh {{ b.amount }}</td>
+        <td>{{ b.status }}</td>
+        <td><a class="btn btn-sm btn-info" href="{% url 'booking_detail' b.id %}">View</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h3>Booking {{ booking.id }}</h3>
+<p><strong>Name:</strong> {{ booking.customer_name }}</p>
+<p><strong>Movie:</strong> {{ booking.show.movie.name }}</p>
+<p><strong>Show:</strong> {{ booking.show.show_time }}</p>
+<p><strong>Seats:</strong> {{ booking.seats }}</p>
+<p><strong>Amount:</strong> KSh {{ booking.amount }}</p>
+<p><strong>Status:</strong> {{ booking.status }}</p>
+{% if booking.status == 'active' %}
+  <div class="card mt-3 p-3">
+    <h5>Your Ticket</h5>
+    <p>Ticket code: <strong>{{ booking.ticket_code }}</strong></p>
+    <a class="btn btn-outline-primary" href="{% url 'booking_list' %}">Back to Bookings</a>
+  </div>
+{% elif booking.status == 'pending' %}
+  <a class="btn btn-success" href="{% url 'pay' booking.id %}">Proceed to Payment</a>
+{% endif %}
+{% endblock %}

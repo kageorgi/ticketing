@@ -1,0 +1,10 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h3>Cancel Booking {{ booking.id }}</h3>
+<p>Are you sure? This will mark booking cancelled.</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">Confirm Cancel</button>
+  <a class="btn btn-secondary" href="{% url 'booking_detail' booking.id %}">Back</a>
+</form>
+{% endblock %}

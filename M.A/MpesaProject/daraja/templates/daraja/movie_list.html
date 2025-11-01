@@ -1,0 +1,23 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h1>Movies</h1>
+{% for movie in movies %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5>{{ movie.name }} — KSh {{ movie.price_per_seat }}</h5>
+      <p>{{ movie.description }}</p>
+      <h6>Shows:</h6>
+      <ul>
+        {% for show in movie.show_set.all %}
+          <li>
+            {{ show.show_time }} — {{ show.available_seats }} seats left
+            <a class="btn btn-sm btn-success" href="{% url 'book_ticket' show.id %}">Book</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% empty %}
+  <p>No movies yet.</p>
+{% endfor %}
+{% endblock %}

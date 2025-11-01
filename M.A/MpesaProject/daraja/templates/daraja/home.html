@@ -1,0 +1,6 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h1>Welcome</h1>
+<p>Today: {{ today }}</p>
+<a class="btn btn-primary" href="{% url 'movie_list' %}">View Movies</a>
+{% endblock %}

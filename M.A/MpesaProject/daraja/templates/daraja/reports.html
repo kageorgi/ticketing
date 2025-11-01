@@ -1,0 +1,23 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h1>Reports</h1>
+<div class="row mb-3">
+  <div class="col-md-4"><div class="card p-3"><h5>Total Revenue</h5><p class="text-success">KSh {{ total_revenue }}</p></div></div>
+  <div class="col-md-4"><div class="card p-3"><h5>Active Bookings</h5><p>{{ active_count }}</p></div></div>
+  <div class="col-md-4"><div class="card p-3"><h5>Canceled</h5><p>{{ canceled_count }}</p></div></div>
+</div>
+
+<h2>Show Occupancy</h2>
+<table class="table">
+  <thead><tr><th>Show</th><th>Booked/Total</th><th>% Full</th></tr></thead>
+  <tbody>
+    {% for s in shows %}
+    <tr>
+      <td>{{ s.show.movie.name }} at {{ s.show.show_time }}</td>
+      <td>{{ s.booked_seats }} / {{ s.total_seats }}</td>
+      <td>{{ s.percent_full }}%</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

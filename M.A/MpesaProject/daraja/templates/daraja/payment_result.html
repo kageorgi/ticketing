@@ -1,0 +1,10 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h3>Payment Result</h3>
+{% if booking.status == 'active' %}
+  <div class="alert alert-success">Payment successful. Your ticket code: <strong>{{ booking.ticket_code }}</strong></div>
+  <a class="btn btn-primary" href="{% url 'booking_detail' booking.id %}">View Ticket</a>
+{% else %}
+  <div class="alert alert-warning">Payment pending or failed.</div>
+{% endif %}
+{% endblock %}

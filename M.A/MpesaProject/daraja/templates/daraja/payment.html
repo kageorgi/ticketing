@@ -1,0 +1,12 @@
+{% extends 'daraja/base.html' %}
+{% block content %}
+<h3>Pay for booking #{{ booking.id }}</h3>
+<p>Name: {{ booking.customer_name }}</p>
+<p>Seats: {{ booking.seats }}</p>
+<p>Amount: KSh {{ booking.amount }}</p>
+<form method="post">
+  {% csrf_token %}
+  <p><em>This is a simulated payment page. Click to mark payment as successful (replace with STK Push in production).</em></p>
+  <button class="btn btn-success" type="submit">Simulate Payment Success</button>
+</form>
+{% endblock %}
